@@ -37,7 +37,7 @@ var ListHeader = React.createClass({
           </div>
           {completed.length > 0 ? (
              <div className="col-md-6 right">
-               <button className="btn btn-warning btn-md" id="clear-completed" onClick={this.clearCompleted}>Clear completed ({completed.length})
+               <button className="btn btn-primary btn-md" id="clear-completed" onClick={this.clearCompleted}>Clear completed ({completed.length})
 
                </button>
              </div>

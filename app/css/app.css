@@ -49,9 +49,8 @@ body {
 }
 
 .navbar-default .navbar-nav>li>a {
-    padding-top: 0px;
-    color: #fff !important;
-    opacity: 0.5 !important;
+    padding-top: 20px;
+    color: #333 !important;
     font-weight: bold;
 }
 
@@ -272,12 +271,16 @@ input[type="checkbox"]:focus {
 
 body {
     background-image: url("http://maps.googleapis.com/maps/api/staticmap?center=USA&zoom=4&scale=2&size=640x420&maptype=roadmap&format=png&visual_refresh=true");
+    background-repeat: no-repeat !important;
     background-size: cover;
 }
 
 .newDiv#a {
     background-image: none !important;
+    background-repeat: none;
     background-color: #fff !important;
-    width: 100%;
+    margin: 0px auto;
+    width: 80%;
     height: 100%;
+    top: 10%;
 }
