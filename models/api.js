@@ -1,6 +1,6 @@
 var app = require('./express.js');
 var User = require('./user.js');
-var Item = require('./item.js');
+var Trip = require('./trip.js');
 var GoogleMapsLoader = require('google-maps');
 
 // setup body parser
