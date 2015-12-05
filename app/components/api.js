@@ -2,9 +2,9 @@ var $ = require("jquery");
 
 // API object
 var api = {
-  // get the list of items, call the callback when complete
-  getItems: function(cb) {
-    var url = "/api/items";
+  // get the user's list of trips, call the callback when complete
+  getTrips: function(cb) {
+    var url = "/api/trips";
     $.ajax({
       url: url,
       dataType: 'json',
@@ -22,15 +22,20 @@ var api = {
       }
     });
   },
-  // add an item, call the callback when complete
-  addItem: function(title, cb) {
-    var url = "/api/items";
+  // add a trip, call the callback when complete
+  addTrip: function(destination,returning,leaving,contact,description,seats,cb) {
+    var url = "/api/trips";
     $.ajax({
       url: url,
       contentType: 'application/json',
       data: JSON.stringify({
-        item: {
-          'title': title
+        trip: {
+          'destination': destination,
+          'returning': returning,
+          'leaving': leaving,
+          'contact': contact,
+          'description': description,
+          'seats': seats
         }
       }),
       type: 'POST',
@@ -48,16 +53,15 @@ var api = {
     });
 
   },
-  // update an item, call the callback when complete
-  updateItem: function(item, cb) {
-    var url = "/api/items/" + item.id;
+  // update a trip, call the callback when complete
+  updateTrip: function(trip, cb) {
+    var url = "/api/trips/" + trip.id;
     $.ajax({
       url: url,
       contentType: 'application/json',
       data: JSON.stringify({
-        item: {
-          title: item.title,
-          completed: item.completed
+        trip: {
+          'trip_id': trip.id //not actually being used, just have to send data because it is a put
         }
       }),
       type: 'PUT',
@@ -74,9 +78,29 @@ var api = {
       }
     });
   },
-  // delete an item, call the callback when complete
-  deleteItem: function(item, cb) {
-    var url = "/api/items/" + item.id;
+  // search for all trips within 50 miles
+  searchTrips: function(search,cb) {
+    var url = "/api/trips/" + search;
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      type: 'GET',
+      headers: {'Authorization': localStorage.token},
+      success: function(res) {
+        if (cb)
+          cb(true, res);
+      },
+      error: function(xhr, status, err) {
+        // if there is an error, remove the login token
+        delete localStorage.token;
+        if (cb)
+          cb(false, status);
+      }
+    });
+  },
+  // delete a user from a trip, call the callback when complete
+  deleteItem: function(trip, cb) {
+    var url = "/api/trips/" + trip.id;
     $.ajax({
       url: url,
       type: 'DELETE',
