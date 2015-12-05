@@ -1,6 +1,7 @@
 var app = require('./express.js');
 var User = require('./user.js');
 var Item = require('./item.js');
+var GoogleMapsLoader = require('google-maps');
 
 // setup body parser
 var bodyParser = require('body-parser');
@@ -58,19 +59,19 @@ app.post('/api/users/login', function (req, res) {
   });
 });
 
-// get all items for the user
-app.get('/api/items', function (req,res) {
+// get all trips for the user
+app.get('/api/trips', function (req,res) {
   // validate the supplied token
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
-      // if the token is valid, find all the user's items and return them
-      Item.find({user:user.id}, function(err, items) {
+      // if the token is valid, find all the user's trips and return them
+      Trip.collection('users').find({user:user.id}, function(err, trips) {
 	if (err) {
 	  res.sendStatus(403);
 	  return;
 	}
-	// return value is the list of items as JSON
-	res.json({items: items});
+	// return value is the list of trips as JSON
+	res.json({trips:trips});
       });
     } else {
       res.sendStatus(403);
@@ -78,19 +79,20 @@ app.get('/api/items', function (req,res) {
   });
 });
 
-// add an item
-app.post('/api/items', function (req,res) {
+// add a trip
+app.post('/api/trips', function (req,res) {
   // validate the supplied token
   // get indexes
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
-      // if the token is valid, create the item for the user
-      Item.create({title:req.body.item.title,completed:false,user:user.id}, function(err,item) {
+      // if the token is valid, create the trip for the user
+      Trip.create({destination:req.body.trip.destination,leaving:req.body.trip.leaving,returning:req.body.trip.returning,
+        contact:req.body.trip.contact,description:req.body.trip.description,seats:req.body.trip.seats,users:[user.id]}, function(err,trip) {
 	if (err) {
 	  res.sendStatus(403);
 	  return;
 	}
-	res.json({item:item});
+	res.json({trip:trip});
       });
     } else {
       res.sendStatus(403);
@@ -98,56 +100,66 @@ app.post('/api/items', function (req,res) {
   });
 });
 
-// get an item
-app.get('/api/items/:item_id', function (req,res) {
+// get destinations within 50 miles
+app.get('/api/trips/:search', function (req,res) {
   // validate the supplied token
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
       // if the token is valid, then find the requested item
-      Item.findById(req.params.item_id, function(err, item) {
-	if (err) {
-	  res.sendStatus(403);
-	  return;
-	}
-        // get the item if it belongs to the user, otherwise return an error
-        if (item.user != user) {
+      var matches = [];
+      Trip.find({}, function(err, trips){
+        if (err) {
           res.sendStatus(403);
-	  return;
+          return;
         }
-        // return value is the item as JSON
-        res.json({item:item});
+        trips.forEach(function(trip){
+          //ask google if trip.destination is within 50 miles of the given destination
+          GoogleMapsLoader.load(function(google) {
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix( {
+              origins: [trip.destination],
+              destinations: [req.paras.search],
+            }, cb);
+            function cb(response,status) {
+              if(status == google.maps.DistanceMatrixStatus.OK) {
+                var distance = response.rows[0].distance.value;
+                //var duration = response.rows[0].duration.text;
+                if(distance<80000) {
+                  matches.push(trip);
+                }
+              }
+            }
+          });
+        });
       });
-    } else {
+        // return all search matches as JSON
+        res.json({matches:matches});
+      } else {
       res.sendStatus(403);
     }
   });
 });
 
-// update an item
-app.put('/api/items/:item_id', function (req,res) {
+// add user to a trip
+app.put('/api/trips/:trip_id', function (req,res) {
   // validate the supplied token
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
-      // if the token is valid, then find the requested item
-      Item.findById(req.params.item_id, function(err,item) {
+      // if the token is valid, then find the requested trip
+      Trip.findById(req.params.trip_id, function(err,trip) {
 	if (err) {
 	  res.sendStatus(403);
 	  return;
 	}
-        // update the item if it belongs to the user, otherwise return an error
-        if (item.user != user.id) {
-          res.sendStatus(403);
-	  return;
-        }
-        item.title = req.body.item.title;
-        item.completed = req.body.item.completed;
-        item.save(function(err) {
+        // update the trip
+        trip.collection('users').insert(user.id);
+        trip.save(function(err) {
 	  if (err) {
 	    res.sendStatus(403);
 	    return;
 	  }
-          // return value is the item as JSON
-          res.json({item:item});
+          // return value is the trip as JSON
+          res.json({trip:trip});
         });
       });
     } else {
@@ -156,13 +168,13 @@ app.put('/api/items/:item_id', function (req,res) {
   });
 });
 
-// delete an item
-app.delete('/api/items/:item_id', function (req,res) {
+// delete one user from a trip
+app.delete('/api/trips/:trip_id', function (req,res) {
   // validate the supplied token
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
-      // if the token is valid, then find the requested item
-      Item.findByIdAndRemove(req.params.item_id, function(err,item) {
+      // if the token is valid, then find the requested trip and remove the user from it
+      Trip.findById(req.params.trip_id,function(err,trip){if(err){res.sendStatus(403);return;}}).collection('users').findByIdAndRemove(user.id, function(err,trip) {
 	if (err) {
 	  res.sendStatus(403);
 	  return;

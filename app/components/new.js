@@ -47,7 +47,7 @@ var New = React.createClass({
 		<span className="icon-bar"></span>
 		<span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="/">BYU Ride-Board</a>
+              <a className="navbar-brand" href="/">BYU Ride-Board</a> //if logged in this should redirect to the dashboard
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               {this.state.loggedIn ? (
