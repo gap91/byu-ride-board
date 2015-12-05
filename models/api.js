@@ -105,7 +105,7 @@ app.get('/api/trips/:search', function (req,res) {
   // validate the supplied token
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
-      // if the token is valid, then find the requested item
+      // if the token is valid, then get all the trips to see if they match the search
       var matches = [];
       Trip.find({}, function(err, trips){
         if (err) {

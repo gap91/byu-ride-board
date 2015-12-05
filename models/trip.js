@@ -8,7 +8,7 @@ var findOrCreate = require('mongoose-findorcreate')
 
 // Trip schema
 var tripSchema = new Schema({
-    users: [{type: ObjectId, ref: 'users'}], // need to make this a list
+    users: [{type: ObjectId, ref: 'users'}], // need to make this a trip
     destination: String,
     leaving: Date,
     returning: Date,
