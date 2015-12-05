@@ -1,13 +1,14 @@
 {
-  "name": "listomatic-node-mongo",
+  "name": "byu-ride-board",
   "version": "0.0.0",
-  "description": "listomatic node server with mongo storage",
+  "description": "This is a BYU ride board using node and mongo and webpack",
   "main": "app.js",
   "dependencies": {
     "bcrypt": "~0.8.3",
     "body-parser": "~1.12.4",
     "bootstrap": "^3.3.6",
     "express": "~4.12.4",
+    "google-maps": "^3.1.0",
     "history": "^1.13.1",
     "jquery": "^2.1.4",
     "jsonwebtoken": "~5.0.1",
@@ -31,6 +32,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Daniel Zappala",
-  "license": "GPL"
+  "author": "Jordan Millard, Garrett Porter, Dave Bennett",
+  "license": "GNU"
 }
