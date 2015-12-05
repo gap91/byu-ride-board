@@ -13,7 +13,7 @@ var tripSchema = new Schema({
     leaving: Date,
     returning: Date,
     contact: String,
-    Discription: String,
+    discription: String,
     seats: int,
 });
 
