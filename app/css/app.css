@@ -280,7 +280,17 @@ body {
     background-repeat: none;
     background-color: #fff !important;
     margin: 0px auto;
-    width: 80%;
+    width: 90%;
     height: 100%;
     top: 10%;
 }
+
+/*
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    body {
+        background-image: url("http://maps.googleapis.com/maps/api/staticmap?center=Colorado&zoom=3&scale=2&size=200x350&maptype=roadmap&format=png&visual_refresh=true"); 
+        background-repeat: no-repeat !important;
+        background-size: cover;
+    }
+}
+*/

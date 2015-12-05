@@ -35,7 +35,7 @@ var Register = React.createClass({
         return this.setState({
           error: true
         });
-      this.history.pushState(null, '/list');
+      this.history.pushState(null, '/dashboard');
     }.bind(this));
   },
 

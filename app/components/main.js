@@ -6,27 +6,26 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 
-var App = require("./app.js");
 var New = require("./new.js");
 var Home = require("./home.js");
-var List = require("./list.js");
 var Login = require("./login.js");
 var Register = require("./register.js");
+var Dashboard = require("./dashboard.js");
+var Create = require("./create.js");
+var Search = require("./search.js");
 
 require("../../node_modules/bootstrap/dist/css/bootstrap.min.css");
 require("../css/app.css");
 
 var routes = (
   <Router>
-    <Route name="app" path="/" component ={App}>
+    <Route name="new" path="/" component ={New}>
       <IndexRoute component = {Home} />
-      <Route name="list" path="/list" component={List} />
-      <Route name="active" path="/list/active" component={List} />
-      <Route name="completed" path="/list/completed" component={List} />
-      <Route name="login" path="/login" component={Login} />
-      <Route name="register" path="/register" component={Register} />
-    </Route>
-    <Route name="new" path="/new" component ={New}>
+      <Route name ="dashboard" path="/dashboard" component={Dashboard} />
+      <Route name ="create" path="/create" component={Create} />
+      <Route name ="search" path="/search" component={Search} />
+      <Route name ="register" path="/register" component={Register} />
+      <Route name ="login" path="/login" component={Login} />
     </Route>
   </Router>
 );

@@ -9,7 +9,7 @@ module.exports = {
     vendor: ["jquery","react","react-router"],
   },
   output: {
-    filename: "js/app.js",
+    filename: "js/new.js",
     path: __dirname + "/public",
   },
   plugins: [
