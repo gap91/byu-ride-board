@@ -4,15 +4,68 @@ Jordan Millard
 Dave Bennett
 Garrett Porter
 
-This project will be a BYU ride board to benefit BYU students and Provo residents.
+This project is a BYU ride board to benefit BYU students and Provo residents.
 
+________________________________________________________________________
 Features:
-Front page showing all destinations in database
-Login/Register
-Create Trip
-Show recommendations while trip/request is being created
-Search for trips
-Use Google Maps API to display trip information
-Display appx trip times
-User Message Service / Disclaimer (Warning / License Agreement)
-PayPal Donation Box (Create Trip/ Search Trip)
+
+Login/Register (Group):
+-Register User
+-Login
+-Logout
+
+Store Trip/User Information in MongoDB (Group):
+-User Table
+	Name
+	UserName
+	Password
+-Trip Table
+	Destination
+	Leave Date
+	Return Date
+	Contact Information
+	Description
+	Number of Seats in Vehicle
+
+Dashboard (Dave):
+-Displays all trips user has created or added to from search page
+-If empty display content with link to search or create trips
+
+Search (Jordan):
+-Search Bar to enter a desired destination
+-List all Trips in database within 50 miles of destination (Google matrix API) and after current date
+-Button on result trips to add to user's dashboard
+
+Create Trip (Garrett):
+-Input Fields (* for required):
+	*Destination (returns error if google can't return valid lat/lon)
+	*Leave Date
+	*Return Date
+	*Contact Information of choice
+	Description
+	Number of seats in vehicle
+
+
+________________________________________________________________________
+Future Enhancements:
+
+Dashboard
+-Edit Trip
+-Profile Picture
+-Password Recovery
+-Use Passport(or other tool) to login with Facebook
+-User messaging service (With disclaimer/warning)
+-Appx Trip Times
+
+Create
+-Post Passenger Trip (Trip request)
+-Specify trip origin (instead of all based at BYU)
+
+Search
+-Search Specify mile radius
+-Search Date Range
+-Link in results to open in separate page
+
+Universal Improvement
+-Show a map with the destination route wherever trips are displayed
+-Adds to help support the site OR Paypal donation box in dashboard
