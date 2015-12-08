@@ -1,7 +1,6 @@
 var app = require('./express.js');
 var User = require('./user.js');
 var Trip = require('./trip.js');
-// var GoogleMapsLoader = require('google-maps');
 
 // setup body parser
 var bodyParser = require('body-parser');
@@ -100,41 +99,20 @@ app.post('/api/trips', function (req,res) {
   });
 });
 
-// get destinations within 50 miles
-app.get('/api/trips/:search', function (req,res) {
+// get all trip destinations
+app.get('/api/trips/all', function (req,res) {
   // validate the supplied token
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
-      // if the token is valid, then get all the trips to see if they match the search
-      // var matches = [];
-      // Trip.find({}, function(err, trips){
-      //   if (err) {
-      //     res.sendStatus(403);
-      //     return;
-      //   }
-      //   trips.forEach(function(trip){
-      //     //ask google if trip.destination is within 50 miles of the given destination
-      //     GoogleMapsLoader.load(function(google) {
-      //       var service = new google.maps.DistanceMatrixService();
-      //       service.getDistanceMatrix( {
-      //         origins: [trip.destination],
-      //         destinations: [req.paras.search],
-      //       }, cb);
-      //       function cb(response,status) {
-      //         if(status == google.maps.DistanceMatrixStatus.OK) {
-      //           var distance = response.rows[0].distance.value;
-      //           //var duration = response.rows[0].duration.text;
-      //           if(distance<80000) {
-      //             matches.push(trip);
-      //           }
-      //         }
-      //       }
-      //     });
-      //   });
-      // });
-      //   // return all search matches as JSON
-      //   res.json({matches:matches});
-      } else {
+      Trip.find({}, function(err, trips){
+        if (err) {
+            res.sendStatus(403);
+            return;
+        }
+        res.json({trips:trips});
+      });
+
+    } else {
       res.sendStatus(403);
     }
   });

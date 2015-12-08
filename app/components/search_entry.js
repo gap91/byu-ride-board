@@ -4,14 +4,15 @@ var ReactRouter = require("react-router");
 var api = require("./api.js");
 
 var Link = ReactRouter.Link;
+var GoogleMapsLoader = require('google-maps');
 
-// Search entry component, handles adding new items to the list
+// Search entry component, handles searching for close destinations
 var SearchEntry = React.createClass({
 
   // initial state
   getInitialState: function() {
     return {
-      // list of items in the todo list
+      // list of search results
       items: [],
     };
   },
@@ -25,8 +26,8 @@ var SearchEntry = React.createClass({
     if (!title) {
       return;
     }
-    // call API to search destinations, and reload once added
-    api.searchTrips(title, this.updateResults); // TODOJMM cb was originally just refresh
+    // call API to get all trips (necesary because the logic and google calls forced to be front end)
+    api.getAllTrips(title, this.updateResults); // TODOJMM cb was originally just refresh
     this.refs.title.value = '';
   },
 
@@ -36,9 +37,34 @@ var SearchEntry = React.createClass({
 
   updateResults: function(status, data){
     if (status) {
-      // set the state for the list of items
+
+      var searchDestination = "Mesa, Arizona"; // TODOJMM Get the search string
+
+      var matches = [];
+      var allTrips = data.trips;
+
+        allTrips.forEach(function(trip){
+          //ask google if trip.destination is within 50 miles of the given destination
+          GoogleMapsLoader.load(function(google) {
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix( {
+              origins: [trip.destination],
+              destinations: [searchDestination],
+            }, cb);
+            function cb(response,status) {
+              if(status == google.maps.DistanceMatrixStatus.OK) {
+                var distance = response.rows[0].distance.value;
+                //var duration = response.rows[0].duration.text;
+                if(distance<80000) {
+                  matches.push(trip);
+                }
+              }
+            }
+          });
+        });
+
       this.setState({
-        items: data.items //TODOJMM I think this will eventually be data.trips
+        items: matches
       });
       this.props.reload // TODOJMM Don't know if this works, maybe just this.reload
     } else {
@@ -61,3 +87,34 @@ var SearchEntry = React.createClass({
 });
 
 module.exports = SearchEntry;
+
+
+
+
+ // if the token is valid, then get all the trips to see if they match the search
+      var matches = [];
+      Trip.find({}, function(err, trips){
+        if (err) {
+          res.sendStatus(403);
+          return;
+        }
+        trips.forEach(function(trip){
+          //ask google if trip.destination is within 50 miles of the given destination
+          GoogleMapsLoader.load(function(google) {
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix( {
+              origins: [trip.destination],
+              destinations: [req.paras.search],
+            }, cb);
+            function cb(response,status) {
+              if(status == google.maps.DistanceMatrixStatus.OK) {
+                var distance = response.rows[0].distance.value;
+                //var duration = response.rows[0].duration.text;
+                if(distance<80000) {
+                  matches.push(trip);
+                }
+              }
+            }
+          });
+        });
+      });
