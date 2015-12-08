@@ -12,7 +12,7 @@ var Login = require("./login.js");
 var Register = require("./register.js");
 var Dashboard = require("./dashboard.js");
 var Create = require("./create.js");
-var Search = require("./search.js");
+var Search = require("./search_entry.js");
 
 require("../../node_modules/bootstrap/dist/css/bootstrap.min.css");
 require("../css/app.css");
