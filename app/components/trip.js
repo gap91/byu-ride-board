@@ -36,3 +36,5 @@ var Item = React.createClass({
         );
     }
 });
+
+module.exports = Trip;
