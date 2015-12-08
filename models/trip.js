@@ -14,7 +14,7 @@ var tripSchema = new Schema({
     returning: Date,
     contact: String,
     discription: String,
-    seats: int,
+    seats: Number,
 });
 
 // ensure shemas use virtual IDs
