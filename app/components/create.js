@@ -13,15 +13,20 @@ var Create = React.createClass({
 
   },
 
+  //handles submit event for creating a new trip
   handleSubmit: function (event) {
   event.preventDefault();
   document.getElementById('heading').scrollIntoView();
-  this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
+  console.log("does this even work");
+  this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData(event));
   },
-  // handles submit event for adding a new item
-  sedFormData: function(event) {
+
+  // handles submission of form data
+  sendFormData: function(event) {
     // prevent default browser submit
+    console.log("made it into the send form data function");
     event.preventDefault();
+    console.log("if it dies here...")
     // get data from form
     var destination = this.refs.destination.value;
     var leaving = this.refs.leaving.value;
@@ -31,12 +36,15 @@ var Create = React.createClass({
     var seats = this.refs.seats.value;
     // call API to add trip
     var _this = this;
+    console.log("about to try and add a trip");
     api.addTrip(destination,leaving,returning,contact,description,seats, function(success, res) {
       if (success) {
-        _this.setState({ type: 'success', message: 'We have received your message and will get in touch shortly. Thanks!' });
+            console.log("succesfully added a trip");
+            _this.setState({ type: 'success', message: 'We have created your trip! Feel free to check it out in your dashboard. Thanks!' });
       }
       else {
-        _this.setState({ type: 'danger', message: 'Sorry, there has been an error. Please try again later or send us an email at info@example.com.' });
+            console.log("no success");
+            _this.setState({ type: 'danger', message: 'Sorry, there has been an error. Please try again later.' });
       }
     });
   },
@@ -44,7 +52,7 @@ var Create = React.createClass({
   // render the trip entry area
   render: function() {
     if (this.state.type && this.state.message) {
-              var classString = 'alert alert-info' + this.state.type;
+              var classString = 'alert alert-' + this.state.type;
               var status = <div id="status" className={classString} ref="status">
                              {this.state.message}
                            </div>;
@@ -54,13 +62,13 @@ var Create = React.createClass({
         <h1 id="heading">Please enter the information about your trip below</h1>
         {status}
         <form action="" id="create-trip-form" name="tripForm" autoComplete="off" onSubmit={this.handleSubmit}>
-          Where are you headed?<br/>
-          <input type="text" id="form-field" ref="destination" placeholder="Destination" autoFocus={true} required /><br/><br/>
+          What is your destination?<br/>
+          <input type="text" id="form-field" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
           When are you leaving?<br/>
           <input type="date" id="form-field" ref="leaving" autoFocus={true} required /><br/><br/>
           When are you returning?<br/>
           <input type="date" id="form-field" ref="returning" autoFocus={true} required /><br/><br/>
-          How would you like to be contacted?<br/>
+          Please leave your contact information. (i.e. email, phone, etc.)<br/>
           <input type="text" id="form-field" ref="contact" placeholder="Contact Information" autoFocus={true} required /><br/><br/>
           For any other details we forgot to ask...<br/>
           <input type="text" id="form-field" ref="description" placeholder="Description" autoFocus={true} required /><br/><br/>
