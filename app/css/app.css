@@ -129,46 +129,46 @@ input[type="radio"], input[type="checkbox"] {
     font-style: italic;
 }
 
-#todo-list {
+#trip-list {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-#todo-list li {
+#trip-list li {
 	position: relative;
 	font-size: 24px;
 	border-bottom: 1px dotted #ccc;
 }
 
-#todo-list li:last-child {
+#trip-list li:last-child {
 	border-bottom: none;
 }
 
-#todo-list li.editing {
+#trip-list li.editing {
 	border-bottom: none;
 	padding: 0;
 }
 
-#todo-list li.editing .edit {
+#trip-list li.editing .edit {
 	display: block;
 	width: 506px;
 	padding: 13px 17px 12px 17px;
 	margin: 0 0 0 43px;
 }
 
-#todo-list li.editing .view {
+#trip-list li.editing .view {
 	display: none;
 }
 
-#todo-list li label.check {
+#trip-list li label.check {
     display: inline-block;
     cursor: pointer;
     position: relative;
     padding-left: 25px;
 }
 
-#todo-list li label.check:before {
+#trip-list li label.check:before {
     content: '✔';
     color: #d9d9d9;
     text-shadow: 0 -1px 0 #bfbfbf;
@@ -181,13 +181,13 @@ input[type="radio"], input[type="checkbox"] {
     bottom: 1px;
 }
 
-#todo-list li.completed label.check:before {
+#trip-list li.completed label.check:before {
     color: #85ada7;
     text-shadow: 0 1px 0 #669991;
     bottom: 1px;
 }
 
-#todo-list li label {
+#trip-list li label {
 	word-break: break-word;
 	font-weight: normal;
 	padding: 15px;
@@ -199,12 +199,12 @@ input[type="radio"], input[type="checkbox"] {
 	transition: color 0.4s;
 }
 
-#todo-list li.completed label {
+#trip-list li.completed label {
 	color: #a9a9a9;
 	text-decoration: line-through;
 }
 
-#todo-list li .destroy {
+#trip-list li .destroy {
     border: none;
     background-color: none;
     display: none;
@@ -228,7 +228,7 @@ button.destroy {
     background: none;
 }
 
-#todo-list li .destroy:hover {
+#trip-list li .destroy:hover {
     background: none;
     text-shadow: 0 0 1px #000,
     0 0 10px rgba(199, 107, 107, 0.8);
@@ -239,23 +239,23 @@ button.destroy {
     transform: scale(1.3);
 }
 
-#todo-list li .destroy:after {
+#trip-list li .destroy:after {
     content: '✖';
 }
 
-#todo-list li:hover .destroy {
+#trip-list li:hover .destroy {
     display: block;
 }
 
-#todo-list li .edit {
+#trip-list li .edit {
     display: none;
 }
 
-#todo-list li.editing:last-child {
+#trip-list li.editing:last-child {
     margin-bottom: -1px;
 }
 
-#list-count {
+#trip-count {
     font-size: 1.1em;
 }
 

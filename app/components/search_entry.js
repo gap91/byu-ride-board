@@ -2,6 +2,7 @@ var React = require("react");
 var ReactRouter = require("react-router");
 
 var api = require("./api.js");
+var ListTrips = require("./list_trips.js");
 
 var Link = ReactRouter.Link;
 var GoogleMapsLoader = require('google-maps');
@@ -76,11 +77,14 @@ var SearchEntry = React.createClass({
   // render the item entry area
   render: function() {
     return (
-      <header id="input">
-        <form id="item-form" name="itemForm" onSubmit={this.submitSearch}>
-          <input type="text" id="new-item" ref="title" placeholder="Enter a Destination" autoFocus={true} />
-        </form>
-      </header>
+      <div>
+        <header id="input">
+          <form id="item-form" name="itemForm" onSubmit={this.submitSearch}>
+            <input type="text" id="new-item" ref="title" placeholder="Enter a Destination" autoFocus={true} />
+          </form>
+        </header>
+        <ListTrips items={this.state.items} reload={this.reload}/>
+      </div>
     );
 
   }

@@ -3,7 +3,7 @@ var React = require("react");
 var api = require("./api.js");
 
 // Trip shown on dashboard
-var Item = React.createClass({
+var Trip = React.createClass({
     // Initial state
     getInitialState: function () {
         return {
