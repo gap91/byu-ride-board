@@ -2,6 +2,12 @@ var React = require("react");
 var ReactRouter = require("react-router");
 var api = require("./api.js");
 
+
+/*TO-DO
+MODAL SUCCESS AND RE-ROUTE...
+          OR
+FADE THE ALERT OUT AFTER 2 SECONDS
+*/
 // List entry component, handles adding new items to the list
 var Create = React.createClass({
 
@@ -17,16 +23,13 @@ var Create = React.createClass({
   handleSubmit: function (event) {
   event.preventDefault();
   document.getElementById('heading').scrollIntoView();
-  console.log("does this even work");
   this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData(event));
   },
 
   // handles submission of form data
   sendFormData: function(event) {
     // prevent default browser submit
-    console.log("made it into the send form data function");
     event.preventDefault();
-    console.log("if it dies here...")
     // get data from form
     var destination = this.refs.destination.value;
     var leaving = this.refs.leaving.value;
@@ -36,10 +39,11 @@ var Create = React.createClass({
     var seats = this.refs.seats.value;
     // call API to add trip
     var _this = this;
-    console.log("about to try and add a trip");
     api.addTrip(destination,leaving,returning,contact,description,seats, function(success, res) {
       if (success) {
-            console.log("succesfully added a trip");
+            for (var ref in _this.refs) {
+              _this.refs[ref].value = ''; 
+            }
             _this.setState({ type: 'success', message: 'We have created your trip! Feel free to check it out in your dashboard. Thanks!' });
       }
       else {
@@ -58,22 +62,22 @@ var Create = React.createClass({
                            </div>;
     }
     return (
-      <div className="newDiv" id="a">
+      <div className="createForm" id="a">
         <h1 id="heading">Please enter the information about your trip below</h1>
         {status}
         <form action="" id="create-trip-form" name="tripForm" autoComplete="off" onSubmit={this.handleSubmit}>
-          What is your destination?<br/>
-          <input type="text" id="form-field" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
-          When are you leaving?<br/>
-          <input type="date" id="form-field" ref="leaving" autoFocus={true} required /><br/><br/>
-          When are you returning?<br/>
-          <input type="date" id="form-field" ref="returning" autoFocus={true} required /><br/><br/>
-          Please leave your contact information. (i.e. email, phone, etc.)<br/>
-          <input type="text" id="form-field" ref="contact" placeholder="Contact Information" autoFocus={true} required /><br/><br/>
-          For any other details we forgot to ask...<br/>
-          <input type="text" id="form-field" ref="description" placeholder="Description" autoFocus={true} required /><br/><br/>
-          How many open seats will you have?<br/>
-          <input type="number" id="form-field" ref="seats" placeholder="# of seats" min="0" autoFocus={true} required /><br/><br/> 
+          <div className="create-question">What is your destination?</div>
+          <input type="text" id="new-item" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
+          <div className="create-question">When are you leaving?</div>
+          <input type="date" id="new-item" ref="leaving" autoFocus={true} required /><br/><br/>
+          <div className="create-question">When are you returning?</div>
+          <input type="date" id="new-item" ref="returning" autoFocus={true} required /><br/><br/>
+          <div className="create-question">Please leave your contact information. (i.e. email, phone, etc.)</div>
+          <input type="text" id="new-item" ref="contact" placeholder="Contact Information" autoFocus={true} required /><br/><br/>
+          <div className="create-question">For any other details we forgot to ask...</div>
+          <input type="text" id="new-item" ref="description" placeholder="Description" autoFocus={true} required /><br/><br/>
+          <div className="create-question">How many open seats will you have?</div>
+          <input type="number" id="new-item" ref="seats" placeholder="# of seats" min="0" autoFocus={true} required /><br/><br/> 
           <input className="btn btn-primary" type="submit" value="Create" />
           {this.state.error ? (
              <div className="alert alert-danger">Invalid username or password.</div>
