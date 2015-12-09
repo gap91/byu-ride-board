@@ -87,3 +87,4 @@ var SearchEntry = React.createClass({
 });
 
 module.exports = SearchEntry;
+

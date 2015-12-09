@@ -41,16 +41,14 @@ var api = {
       type: 'POST',
       headers: {'Authorization': localStorage.token},
       success: function(res) {
-        console.log("everything went well on the back end");
         if (cb)
-          cb(true);
+          cb(true, res);
       },
       error: function(xhr, status, err) {
-        console.log("apparently the something didn't work on the back end");
         // if there is an error, remove the login token
         delete localStorage.token;
         if (cb)
-          cb(false);
+          cb(false, status);
       }
     });
 
@@ -81,8 +79,8 @@ var api = {
     });
   },
   // search for all trips within 50 miles
-  getAllTrips: function(cb) {
-    var url = "/api/trips/all";
+  searchTrips: function(search,cb) {
+    var url = "/api/trips/" + search;
     $.ajax({
       url: url,
       dataType: 'json',
