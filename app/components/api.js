@@ -23,7 +23,7 @@ var api = {
     });
   },
   // add a trip, call the callback when complete
-  addTrip: function(destination,returning,leaving,contact,description,seats,cb) {
+  addTrip: function(destination,leaving,returning,contact,description,seats,cb) {
     var url = "/api/trips";
     $.ajax({
       url: url,
@@ -41,14 +41,16 @@ var api = {
       type: 'POST',
       headers: {'Authorization': localStorage.token},
       success: function(res) {
+        console.log("everything went well on the back end");
         if (cb)
-          cb(true, res);
+          cb(true);
       },
       error: function(xhr, status, err) {
+        console.log("apparently the something didn't work on the back end");
         // if there is an error, remove the login token
         delete localStorage.token;
         if (cb)
-          cb(false, status);
+          cb(false);
       }
     });
 

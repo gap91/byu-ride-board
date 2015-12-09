@@ -122,9 +122,9 @@ input[type="radio"], input[type="checkbox"] {
     font-smoothing: antialiased;
 }
 
-#new-item {
+#form-field {
     padding: 16px 16px 16px 60px;
-    border: none;
+    border: 10px;
     background: #efefef;
     z-index: 2;
     box-shadow: none;
