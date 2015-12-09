@@ -79,8 +79,8 @@ var api = {
     });
   },
   // search for all trips within 50 miles
-  searchTrips: function(search,cb) {
-    var url = "/api/trips/" + search;
+  getAllTrips: function(cb) {
+    var url = "/api/trips/all";
     $.ajax({
       url: url,
       dataType: 'json',

@@ -28,7 +28,7 @@ var SearchEntry = React.createClass({
       return;
     }
     // call API to get all trips (necesary because the logic and google calls forced to be front end)
-    api.getAllTrips(title, this.updateResults); // TODOJMM cb was originally just refresh
+    api.getAllTrips(this.updateResults); // TODOJMM cb was originally just refresh
     this.refs.title.value = '';
   },
 
@@ -51,10 +51,11 @@ var SearchEntry = React.createClass({
             service.getDistanceMatrix( {
               origins: [trip.destination],
               destinations: [searchDestination],
+              travelMode: google.maps.TravelMode["DRIVING"]
             }, cb);
             function cb(response,status) {
               if(status == google.maps.DistanceMatrixStatus.OK) {
-                var distance = response.rows[0].distance.value;
+                var distance = response.rows[0].elements[0].distance.value;
                 //var duration = response.rows[0].duration.text;
                 if(distance<80000) {
                   matches.push(trip);
