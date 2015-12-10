@@ -51,6 +51,15 @@ var Dashboard = React.createClass({
   },
   render: function() {
     this.getTrips();
+    if (this.state.items.length == 0) {
+      return (
+        <div className = "dashDisplay" id="a">
+          <h1> Welcome {localStorage.name}</h1>
+          <h2> To start creating trips using the BYU Ride Board select the create tab above.</h2>
+          <h2> To search for trips use the search tab above.</h2>
+        </div>
+      );
+    }
     return (
       <div className="dashDisplay" id="a">
         <h1>Welcome Back  {localStorage.name}</h1>
