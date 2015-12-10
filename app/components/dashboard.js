@@ -17,6 +17,11 @@ function getCookie(cname) {
     return "";
 }
 
+function isInArray(array, search)
+{
+    return array.indexOf(search) >= 0;
+}
+
 // Dashboard page
 var Dashboard = React.createClass({
   getInitialState: function() {
@@ -32,8 +37,9 @@ var Dashboard = React.createClass({
       var matches = [];
       var curTrips = data.trips;
       curTrips.forEach(function(trip){
-        console.log(trip.users);
-        matches.push(trip);
+        if (isInArray(trip.users, localStorage.id)){
+          matches.push(trip);
+        }
       });
       this.setState({
         items: matches
@@ -47,7 +53,7 @@ var Dashboard = React.createClass({
     this.getTrips();
     return (
       <div className="dashDisplay" id="a">
-        <h1>Welcome Back  {getCookie("username")}</h1>
+        <h1>Welcome Back  {localStorage.name}</h1>
         <h2>Here are all of your trips:</h2>
         <ListTrips items={this.state.items} reload={this.getTrips}/>
       </div>
