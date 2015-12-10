@@ -63,6 +63,11 @@ var SearchEntry = React.createClass({
 
       allTrips.forEach(function(trip){
         //ask google if trip.destination distance from given destination
+
+        //console.log(trip); // What the trip objects look like
+        // TOODJMM pass up any trips that have already departed
+        // TODOJMM User Spefify Leave-By date
+
         GoogleMapsLoader.load(function(google) {
           var service = new google.maps.DistanceMatrixService();
           service.getDistanceMatrix( {

@@ -6,7 +6,7 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 
-var New = require("./new.js");
+var New = require("./ride_board.js");
 var Home = require("./home.js");
 var Login = require("./login.js");
 var Register = require("./register.js");
