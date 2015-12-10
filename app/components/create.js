@@ -72,17 +72,17 @@ var Create = React.createClass({
           <div className="create-question">What is your destination?</div>
           <input type="text" id="new-item" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
           <div className="create-question">When are you leaving?</div>
-          <input type="date" id="new-item" ref="leaving" autoFocus={true} required /><br/><br/>
+          <input type="date" id="new-item" ref="leaving" required /><br/><br/>
           <div className="create-question">When are you returning?</div>
-          <input type="date" id="new-item" ref="returning" autoFocus={true} required /><br/><br/>
+          <input type="date" id="new-item" ref="returning" required /><br/><br/>
           <div className="create-question">Please leave your contact information. (i.e. email, phone, etc.)</div>
-          <input type="text" id="new-item" ref="contact" placeholder="Contact Information" autoFocus={true} required /><br/><br/>
+          <input type="text" id="new-item" ref="contact" placeholder="Contact Information" required /><br/><br/>
           <div className="create-question">For any other details we forgot to ask...</div>
-          <input type="text" id="new-item" ref="description" placeholder="Description" autoFocus={true} required /><br/><br/>
+          <input type="text" id="new-item" ref="description" placeholder="Description" required /><br/><br/>
           <div className="create-question">How many open seats will you have?</div>
-          <input type="number" id="new-item" ref="seats" placeholder="# of seats" min="0" autoFocus={true} required /><br/><br/> 
+          <input type="number" id="new-item" ref="seats" placeholder="# of seats" min="0" required /><br/><br/> 
           <input className="btn btn-primary" type="submit" value="Create" />
-          <a className="statement">Please be reminded that all trips leave from, and return to, Provo, UT.</a>
+          <a className="statement">Please be reminded that all trips leave from, and return to, Provo, UT.</a><br/><br/>
           {this.state.error ? (
              <div className="alert alert-danger">Sorry, there has been an error. Please try again later.</div>
            ) : null }

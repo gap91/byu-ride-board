@@ -25,6 +25,10 @@ body {
     color: #fff;
 }
 
+#heading:hover {
+    cursor: default;
+}
+
 .title {
     margin: 20px 0px 10px 0px;
     font-size: 1.5em;
@@ -73,6 +77,8 @@ body {
     border-color: #0266C8 !important;
     color: #fff !important;
     min-width:100px;
+    margin-left: 20px;
+    font-weight: bold;
 }
 
 input[type="radio"], input[type="checkbox"] {
@@ -291,7 +297,6 @@ body {
     top: 10%;
     font-size: 20px;
     color: #fff;
-    overflow: scroll;
 }
 
 .dashDisplay#a {
@@ -322,6 +327,10 @@ body {
     color: #fff;
 }
 
+.create-question:hover {
+    cursor: default;
+}
+
 .statement {
     float: right;
     color: #fff;
@@ -329,3 +338,10 @@ body {
     padding-top: 5px;
     font-size: 15px;
 }
+
+.statement:hover
+ {
+     Cursor:default !important;
+     Color: #fff;
+     Text-Decoration: None !important; 
+ }
