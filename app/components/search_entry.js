@@ -4,8 +4,10 @@ var ReactRouter = require("react-router");
 var api = require("./api.js");
 var ListTrips = require("./list_trips.js");
 
-var Link = ReactRouter.Link;
 var GoogleMapsLoader = require('google-maps');
+var SearchDestination = "";
+var Matches = [];
+
 
 // Search entry component, handles searching for close destinations
 var SearchEntry = React.createClass({
@@ -24,51 +26,57 @@ var SearchEntry = React.createClass({
     event.preventDefault();
     // get search destination from form
     var title = this.refs.title.value;
+    SearchDestination = title;
     if (!title) {
       return;
     }
     // call API to get all trips (necesary because the logic and google calls forced to be front end)
-    api.getAllTrips(this.updateResults); // TODOJMM cb was originally just refresh
+    api.getAllTrips(this.parseResults);
     this.refs.title.value = '';
   },
 
-  reload: function() {
-    // TODOJMM
-  },
-
-  updateResults: function(status, data){
+  parseResults: function(status, data){
     if (status) {
 
-      var searchDestination = "Mesa, Arizona"; // TODOJMM Get the search string
+      var searchDestination = SearchDestination;
 
-      var matches = [];
+      Matches = [];
       var allTrips = data.trips;
+      var _this = this;
 
-        allTrips.forEach(function(trip){
-          //ask google if trip.destination is within 50 miles of the given destination
-          GoogleMapsLoader.load(function(google) {
-            var service = new google.maps.DistanceMatrixService();
-            service.getDistanceMatrix( {
-              origins: [trip.destination],
-              destinations: [searchDestination],
-              travelMode: google.maps.TravelMode["DRIVING"]
-            }, cb);
-            function cb(response,status) {
-              if(status == google.maps.DistanceMatrixStatus.OK) {
-                var distance = response.rows[0].elements[0].distance.value;
-                //var duration = response.rows[0].duration.text;
-                if(distance<80000) {
-                  matches.push(trip);
-                }
+      allTrips.forEach(function(trip){
+        //ask google if trip.destination is within 50 miles of the given destination
+        GoogleMapsLoader.load(function(google) {
+          var service = new google.maps.DistanceMatrixService();
+          service.getDistanceMatrix( {
+            origins: [trip.destination],
+            destinations: [searchDestination],
+            travelMode: google.maps.TravelMode["DRIVING"]
+          }, cb);
+          function cb(response,status) {
+            if(status == google.maps.DistanceMatrixStatus.OK) {
+              var distance = response.rows[0].elements[0].distance.value;
+              //var duration = response.rows[0].duration.text;
+              if(distance<80000) {
+                Matches.push(trip);
+                      Matches.forEach(function(match) {
+                        console.log("match: " + match);
+                        _this.setState({
+                          items: Matches
+                        });
+                      });
               }
             }
-          });
+          }
         });
-
-      this.setState({
-        items: matches
       });
-      this.props.reload // TODOJMM Don't know if this works, maybe just this.reload
+
+      console.log("Setting State for these Matches: ");
+      Matches.forEach(function(match) {
+        console.log("match: " + match);
+      });
+
+
     } else {
       // if the API call fails, redirect to the login page
       this.context.router.transitionTo('/login');
@@ -84,7 +92,7 @@ var SearchEntry = React.createClass({
             <input type="text" id="new-item" ref="title" placeholder="Enter a Destination" autoFocus={true} />
           </form>
         </header>
-        <ListTrips items={this.state.items} reload={this.reload}/>
+        <ListTrips items={this.state.items} />
       </div>
     );
 
