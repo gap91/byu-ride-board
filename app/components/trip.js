@@ -15,7 +15,8 @@ var Trip = React.createClass({
             returning: returningDate.toDateString(),
             contact: this.props.trip.contact,
             description: this.props.trip.description,
-            seats: this.props.trip.seats
+            seats: this.props.trip.seats,
+            users: this.props.trip.users
         }
     },
     // delete myself from this a trip

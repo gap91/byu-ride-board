@@ -29,9 +29,18 @@ var Dashboard = React.createClass({
   },
   updateResults: function(status, data){
     if (status) {
-      this.setState({
-        items: data.trips
+      var matches = [];
+      var curTrips = data.trips;
+      curTrips.forEach(function(trip){
+        console.log(trip.users);
+        matches.push(trip);
       });
+      this.setState({
+        items: matches
+      });
+    }
+    else {
+        this.context.router.transitionTo('/login');
     }
   },
   render: function() {
