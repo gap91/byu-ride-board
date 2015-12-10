@@ -273,13 +273,15 @@ body {
     background-image: url("http://maps.googleapis.com/maps/api/staticmap?center=USA&zoom=4&scale=2&size=640x420&maptype=roadmap&format=png&visual_refresh=true");
     background-repeat: no-repeat !important;
     background-size: cover;
+    background-attachment: fixed;
+    height: 640px;
 }
 
 
 .tripDisplay {
     background-image: none !important;
     background-repeat: none;
-    background-color: rbga(25, 25, 25, .6) !important;
+    background-color: rgba(25, 25, 25, .6) !important;
     margin: 0px auto;
     padding: 20px 5px 20px 5px;
     width: 65%;

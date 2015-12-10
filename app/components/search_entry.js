@@ -40,6 +40,11 @@ var SearchEntry = React.createClass({
 
       var searchDestination = SearchDestination;
 
+      // Clear the list of results when the seach is first submitted
+      this.setState({
+        items: []
+      });
+
       if (searchDestination == "all"){
         // For testing enter code word all to see all destinations
         this.setState({
