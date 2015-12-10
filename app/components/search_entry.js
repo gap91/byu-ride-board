@@ -40,6 +40,14 @@ var SearchEntry = React.createClass({
 
       var searchDestination = SearchDestination;
 
+      if (searchDestination == "all"){
+        // For testing enter code word all to see all destinations
+        this.setState({
+          items: data.trips
+        });
+        return;
+      }
+
       Matches = [];
       var allTrips = data.trips;
       var _this = this;
