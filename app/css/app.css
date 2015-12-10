@@ -275,16 +275,31 @@ body {
     background-size: cover;
 }
 
+
+.tripDisplay {
+    background-image: none !important;
+    background-repeat: none;
+    background-color: rbga(25, 25, 25, .6) !important;
+    margin: 0px auto;
+    padding: 20px 5px 20px 5px;
+    width: 65%;
+    height: 100%;
+    top: 10%;
+    font-size: 20px;
+    color: #fff;
+}
+
 .createForm#a {
     background-image: none !important;
     background-repeat: none;
     background-color: rgba(25, 25, 25, .6) !important;
     margin: 0px auto;
     padding: 20px 5px 20px 5px;
-    width: 100%;
+    width: 65%;
     height: 100%;
     top: 10%;
     font-size: 20px;
+    //border: 5px solid #0266C8;
 }
 
 .create-question {
