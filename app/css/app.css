@@ -399,13 +399,18 @@ body {
     margin-top: 75px;
 }
 
-.homepage_wrapper#a {
-     Color: #fff;
+.homepage_link {
+     Color: black;
      Text-Decoration: None !important; 
 }
 
-.homepage_wrapper#a:hover {
-     Color: #fff;
+.homepage_link:visited {
+     Color: black;
+     Text-Decoration: None !important; 
+}
+
+.homepage_link:hover {
+    font-weight: bold;
 }
 
 .orbetweenbuttons {

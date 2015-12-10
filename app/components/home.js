@@ -18,7 +18,7 @@ var Home = React.createClass({
 	      <br />
 	      <p>Or Create your own trip and allow others to contact you for a ride.</p>
 	      <br />
-	      <p>See our <a href="https://github.com/gap91/byu-ride-board/wiki">wiki</a> page for a full rundown on our project.</p>
+	      <p>See our <a target="_blank" className="homepage_link" href="https://github.com/gap91/byu-ride-board/wiki">wiki</a> page for a full rundown on our project.</p>
 	      <p>DISCLAIMER: The CS 360 group who created this web application is not responsible for any actions/communication/payments made via the contact information posted in this site.</p>
 	      <br />
 	      <br />
