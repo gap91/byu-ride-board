@@ -25,7 +25,7 @@ var Dashboard = React.createClass({
     };
   },
   getTrips: function() {
-    return api.getTrips(this.updateResults);
+    return api.getAllTrips(this.updateResults);
   },
   updateResults: function(status, data){
     if (status) {
@@ -37,7 +37,7 @@ var Dashboard = React.createClass({
   render: function() {
     this.getTrips();
     return (
-      <div className="tripDisplay" id="a">
+      <div className="dashDisplay" id="a">
         <h1>Welcome Back  {getCookie("username")}</h1>
         <h2>Here are all of your trips:</h2>
         <ListTrips items={this.state.items} reload={this.getTrips}/>

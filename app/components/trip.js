@@ -11,7 +11,7 @@ var Trip = React.createClass({
             leaving: this.props.trip.leaving,
             returning: this.props.trip.returning,
             contact: this.props.trip.contact,
-            discription: this.props.trip.discription,
+            description: this.props.trip.description,
             seats: this.props.trip.seats
         }
     },
@@ -38,9 +38,9 @@ var Trip = React.createClass({
                     <p>{this.props.trip.returning}</p>
                     <h3>Contact:</h3>
                     <p>{this.props.trip.contact}</p>
-                    <h3>Description:</h3>
-                    <p>{this.props.trip.discription}</p>
-                    <h3>Seats:</h3>
+                    <h3>Description</h3>
+                    <p>{this.props.trip.description}</p>
+                    <h3>Seats</h3>
                     <p>{this.props.trip.seats}</p>
                 </div>
                 <br/><br/>
