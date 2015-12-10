@@ -33,8 +33,9 @@ Dashboard (Dave):
 
 Search (Jordan):
 -Search Bar to enter a desired destination
--List all Trips in database within 50 miles of destination (Google matrix API) and after current date
--Button on result trips to add to user's dashboard
+-Specify Search Radius (miles)
+-Optionally specify a latest leave by date
+-Filter and list all trips based on search criteria
 
 Create Trip (Garrett):
 -Input Fields (* for required):
@@ -62,8 +63,7 @@ Create
 -Specify trip origin (instead of all based at BYU)
 
 Search
--Search Specify mile radius
--Search Date Range
+-Button on result trips to add to user's dashboard (future enhancement?)
 -Link in results to open in separate page
 
 Universal Improvement

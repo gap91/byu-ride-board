@@ -103,21 +103,9 @@ var SearchEntry = React.createClass({
           // User specified a leave before date
           if (LeaveBefore < leavingDate){
             // If the leave before date is before the leaving date, don't use that trip
-
-            console.log(trip);
-            console.log("This trip leaves after specified date, not using");
             return;
           }
-
         }
-
-
-
-        // console.log(today);
-        // console.log(returnDate);
-
-        // TOODJMM pass up any trips that have already departed
-        // TODOJMM User Spefify Leave-By date
 
         GoogleMapsLoader.load(function(google) {
           var service = new google.maps.DistanceMatrixService();
