@@ -29,7 +29,7 @@ var Trip = React.createClass({
         var classes = "";
         return (
             <li className={classes}>
-                <div className="tripDisplay">
+                <div className="tripDisplay" id="a">
                     <h2>Destination</h2>
                     <p>{this.props.trip.destination}</p>
                     <h3>Leaving</h3>
