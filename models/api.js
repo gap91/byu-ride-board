@@ -74,7 +74,6 @@ app.get('/api/trips', function (req,res) {
       });
       // return value is the list of trips as JSON
       res.json({trips:trips});
-      console.log(cursor);
       trips = cursor.toArray(); // this doesn't actually work
 	  res.json({trips:trips});
     } else {

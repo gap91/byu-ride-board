@@ -1,6 +1,7 @@
 var React = require("react");
 var ReactRouter = require("react-router");
 var api = require("./api.js");
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 
 /*TO-DO
@@ -56,15 +57,17 @@ var Create = React.createClass({
   // render the trip entry area
   render: function() {
     if (this.state.type && this.state.message) {
-              var classString = 'alert alert-' + this.state.type;
-              var status = <div id="status" className={classString} ref="status">
-                             {this.state.message}
-                           </div>;
+      var classString = 'alert alert-' + this.state.type;
+      var status = <div id="status" className={classString} class={classString} ref="status">
+                     {this.state.message}
+                   </div>;
     }
     return (
       <div className="createForm" id="a">
         <h1 id="heading">Please enter the information about your trip below</h1>
-        {status}
+        <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionLeaveTimeout={500}>
+          {status}
+        </ReactCSSTransitionGroup>
         <form action="" id="create-trip-form" name="tripForm" autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="create-question">What is your destination?</div>
           <input type="text" id="new-item" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
@@ -79,8 +82,9 @@ var Create = React.createClass({
           <div className="create-question">How many open seats will you have?</div>
           <input type="number" id="new-item" ref="seats" placeholder="# of seats" min="0" autoFocus={true} required /><br/><br/> 
           <input className="btn btn-primary" type="submit" value="Create" />
+          <a className="statement">Please be reminded that all trips leave from, and return to, Provo, UT.</a>
           {this.state.error ? (
-             <div className="alert alert-danger">Invalid username or password.</div>
+             <div className="alert alert-danger">Sorry, there has been an error. Please try again later.</div>
            ) : null }
         </form>
       </div>

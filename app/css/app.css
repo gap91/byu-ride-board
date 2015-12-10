@@ -72,6 +72,7 @@ body {
     background-color: #0266C8 !important;
     border-color: #0266C8 !important;
     color: #fff !important;
+    min-width:100px;
 }
 
 input[type="radio"], input[type="checkbox"] {
@@ -296,7 +297,7 @@ body {
 .dashDisplay#a {
     background-image: none !important;
     background-repeat: none;
-    background-color: rgba(255, 255, 255, .6) !important;
+    background-color: rgba(255, 255, 255, .8) !important;
     margin: 0px auto;
     padding: 20px 5px 20px 5px;
     width: 100%;
@@ -321,12 +322,10 @@ body {
     color: #fff;
 }
 
-/*
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    body {
-        background-image: url("http://maps.googleapis.com/maps/api/staticmap?center=Colorado&zoom=3&scale=2&size=200x350&maptype=roadmap&format=png&visual_refresh=true"); 
-        background-repeat: no-repeat !important;
-        background-size: cover;
-    }
+.statement {
+    float: right;
+    color: #fff;
+    padding-right: 120px;
+    padding-top: 5px;
+    font-size: 15px;
 }
-*/
