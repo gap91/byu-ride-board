@@ -50,14 +50,16 @@ var New = React.createClass({
               <a className="navbar-brand" href="/">BYU Ride-Board</a>
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div className="nav navbar-nav navbar-right">
               {this.state.loggedIn ? (
                  <ul className="nav navbar-nav">
-                   <li><a href="#/dashboard">Dashboard</a></li>
-                   <li><a href="#/create">Create</a></li>
-                   <li><a href="#/search">Search</a></li>
-                   <li><a href="#" onClick={this.logout}>Logout</a></li>
+                   <li className="nav-element"><a href="#/dashboard">Dashboard</a></li>
+                   <li className="nav-element"><a href="#/create">Create</a></li>
+                   <li className="nav-element"><a href="#/search">Search</a></li>
+                   <li className="nav-element"><a href="#" onClick={this.logout}>Logout</a></li>
                  </ul>
                ) : (<div></div>)}
+            </div>
             </div>
           </div>
         </nav>
