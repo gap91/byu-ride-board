@@ -383,3 +383,35 @@ body {
     border-color: #0266C8;
     color: #fff;
 }
+
+.homepage_wrapper {
+    background-image: none !important;
+    background-repeat: none;
+    background-color: rgba(96, 96, 96, .9) !important;
+    border-color: rgba(25, 25, 25, .8) !important;
+    margin: 0px auto;
+    padding: 20px 5px 20px 5px;
+    width: 85%;
+    height: 100%;
+    top: 10%;
+    font-size: 24px;
+    color: #fff;
+    margin-top: 75px;
+}
+
+.homepage_wrapper#a {
+     Color: #fff;
+     Text-Decoration: None !important; 
+}
+
+.homepage_wrapper#a:hover {
+     Color: #fff;
+}
+
+.orbetweenbuttons {
+    font-size: 18px;
+}
+
+.creator {
+    font-family: "Arial Black", Gadget, sans-serif;
+}

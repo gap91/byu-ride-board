@@ -174,7 +174,7 @@ var SearchEntry = React.createClass({
           <input type="text" id="new-item" ref="searchtext" placeholder="City or Address" autoFocus={true} required /><br/><br/>
           <div className="create-question">Enter a mile radius</div>
           <input type="number" id="new-item" ref="radius" defaultValue="50" min="5" max="1000" required/><br/><br/>
-          <div className="create-question">Leave befre this date (optional)</div>
+          <div className="create-question">Leave by this date (optional)</div>
           <input type="date" id="new-item" ref="leaveBefore" /><br/><br/>
           <input className="btn btn-primary" type="submit" value="Search" /><br/><br/>
           <a className="statement">Please be reminded that all trips leave from, and return to, Provo, UT.</a>
