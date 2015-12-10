@@ -65,14 +65,15 @@ app.get('/api/trips', function (req,res) {
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
       // if the token is valid, find all the user's trips and return them
-      var cursor = Trip.find(
+      trips = Trip.find(
         { "results.user": user.id}, function(err, trips) {
-	        if (err) {
-	            res.sendStatus(403);
-	            return;
-	    }
-	    // return value is the list of trips as JSON
+        	if (err) {
+        	  res.sendStatus(403);
+        	  return;
+        	}
       });
+      // return value is the list of trips as JSON
+      res.json({trips:trips});
       console.log(cursor);
       trips = cursor.toArray(); // this doesn't actually work
 	  res.json({trips:trips});
