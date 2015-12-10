@@ -28,23 +28,59 @@ var Trip = React.createClass({
     // construct a list of classes for the trip CSS
         var classes = "";
         return (
-            <li className={classes}>
+            <div className={classes}>
                 <div className="tripDisplay" id="a">
-                    <h2>Destination</h2>
-                    <p>{this.props.trip.destination}</p>
-                    <h3>Leaving:</h3>
-                    <p>{this.props.trip.leaving}</p>
-                    <h3>Returning:</h3>
-                    <p>{this.props.trip.returning}</p>
-                    <h3>Contact:</h3>
-                    <p>{this.props.trip.contact}</p>
-                    <h3>Description</h3>
-                    <p>{this.props.trip.description}</p>
-                    <h3>Seats</h3>
-                    <p>{this.props.trip.seats}</p>
+                    <table className="tripTable" border-bottom="1px solid #ddd" cellSpacing="1" cellPadding="1">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div className="destination">
+                                        <strong>
+                                        <h2>Destination</h2>
+                                        </strong>
+                                        <p>{this.props.trip.destination}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="tableElement">
+                                        <strong>Leaving:</strong>
+                                        <p>{this.props.trip.leaving}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="tableElement">
+                                        <strong>Returning:</strong>
+                                        <p>{this.props.trip.returning}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="tableElement">
+                                        <strong>Seats:</strong>
+                                        <p>{this.props.trip.seats}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="tableElement">
+                                        <strong>Contact:</strong>
+                                        <p>{this.props.trip.contact}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div className="tableElement">
+                                        <strong>Description</strong>
+                                        <p>{this.props.trip.description}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <br/><br/>
-            </li>
+            </div>
         );
     }
 });
