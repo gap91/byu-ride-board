@@ -8,8 +8,7 @@ var Trip = React.createClass({
     getInitialState: function () {
         var leavingDate = new Date(this.props.trip.leaving);
         var returningDate = new Date(this.props.trip.returning);
-        console.log(leavingDate);
-        console.log(returningDate);
+        
         return {
             destination: this.props.trip.destination,
             leaving: leavingDate.toDateString(),
