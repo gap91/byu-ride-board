@@ -28,6 +28,9 @@ var SearchEntry = React.createClass({
 
   // handles submit event for searching destinations
   submitSearch: function(event) {
+
+    console.log(localStorage.token);
+
     // prevent default browser submit
     event.preventDefault();
     // get values from form
@@ -86,9 +89,6 @@ var SearchEntry = React.createClass({
       var _this = this;
 
       allTrips.forEach(function(trip){
-        //ask google if trip.destination distance from given destination
-
-        // console.log(trip); // What the trip objects look like
 
         var today = new Date();
         var returnDate = new Date(trip.returning);
@@ -107,6 +107,7 @@ var SearchEntry = React.createClass({
           }
         }
 
+        //ask google if trip.destination distance from given destination
         GoogleMapsLoader.load(function(google) {
           var service = new google.maps.DistanceMatrixService();
           service.getDistanceMatrix( {

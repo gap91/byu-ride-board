@@ -24,6 +24,18 @@ var Create = React.createClass({
   handleSubmit: function (event) {
   event.preventDefault();
   document.getElementById('heading').scrollIntoView();
+
+  var leaveDate = new Date(this.refs.leaving.value);
+  var returnDate = new Date(this.refs.returning.value);
+
+  if (returnDate < leaveDate){
+    this.setState({
+      type: 'danger',
+      message: 'Return date must be after leave date.'
+    });
+    return;
+  }
+
   this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData(event));
   },
 
@@ -38,6 +50,10 @@ var Create = React.createClass({
     var contact = this.refs.contact.value;
     var description = this.refs.description.value;
     var seats = this.refs.seats.value;
+
+
+
+
     // call API to add trip
     var _this = this;
     api.addTrip(destination,leaving,returning,contact,description,seats, function(success, res) {
@@ -55,22 +71,25 @@ var Create = React.createClass({
     });
   },
 
-  closeAlert: function(_this, event) {
-    event.preventDefault();
-    _this.setState({ type:'', message: ''});
-  },
-
   // render the trip entry area
   render: function() {
     var date = new Date();
-    var _this = this;
+
     if (this.state.type && this.state.message) {
       var classString = 'alert alert-' + this.state.type;
       var status = <div id="status" className={classString} ref="status">
-                     <a href="#/dashboard" className="close" data-dismiss="alert" aria-label="close">✖</a>
-                     {this.state.message}
-                   </div>;
+                 {this.state.message}
+               </div>;
     }
+
+    var currentTime = new Date()
+    var month1 = currentTime.getMonth() + 1
+    var day1 = currentTime.getDate()
+    var year1 = currentTime.getFullYear()
+    if (month1<10) month1="0"+month1; 
+    if (day1<10) day1="0"+day1; 
+    curdate = year1 + "-" + month1 + "-" + day1
+
     return (
       <div className="createForm" id="a">
         <h1 id="heading">Please enter the information about your trip below</h1>
@@ -81,9 +100,9 @@ var Create = React.createClass({
           <div className="create-question">What is your destination?</div>
           <input type="text" id="new-item" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
           <div className="create-question">When are you leaving?</div>
-          <input type="date" id="new-item" ref="leaving" min="{date}"required /><br/><br/>
+          <input type="date" id="new-item" ref="leaving" min={curdate} required /><br/><br/>
           <div className="create-question">When are you returning?</div>
-          <input type="date" id="new-item" ref="returning" required /><br/><br/>
+          <input type="date" id="new-item" ref="returning" min={curdate} required /><br/><br/>
           <div className="create-question">Please leave your contact information. (i.e. email, phone, etc.)</div>
           <input type="text" id="new-item" ref="contact" placeholder="Contact Information" required /><br/><br/>
           <div className="create-question">For any other details (cost, payment, etc...)</div>
