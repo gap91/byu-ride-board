@@ -62,6 +62,7 @@ var Create = React.createClass({
 
   // render the trip entry area
   render: function() {
+    var date = new Date();
     var _this = this;
     if (this.state.type && this.state.message) {
       var classString = 'alert alert-' + this.state.type;
@@ -80,7 +81,7 @@ var Create = React.createClass({
           <div className="create-question">What is your destination?</div>
           <input type="text" id="new-item" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
           <div className="create-question">When are you leaving?</div>
-          <input type="date" id="new-item" ref="leaving" required /><br/><br/>
+          <input type="date" id="new-item" ref="leaving" min="{date}"required /><br/><br/>
           <div className="create-question">When are you returning?</div>
           <input type="date" id="new-item" ref="returning" required /><br/><br/>
           <div className="create-question">Please leave your contact information. (i.e. email, phone, etc.)</div>

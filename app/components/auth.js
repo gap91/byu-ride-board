@@ -57,6 +57,7 @@ var auth = {
         // on success, store a login token
         localStorage.token = res.token;
         localStorage.name = res.name;
+        localStorage.id = res.id;
         this.onChange(true);
         if (cb)
           cb(true);

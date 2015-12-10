@@ -51,7 +51,7 @@ app.post('/api/users/login', function (req, res) {
       // create a token
       var token = User.generateToken(user.username);
       // return value is JSON containing user's name and token
-      res.json({name: user.name, token: token});
+      res.json({name: user.name, token: token, id: user.id});
     } else {
       res.sendStatus(403);
     }
