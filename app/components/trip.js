@@ -29,8 +29,19 @@ var Trip = React.createClass({
         var classes = "";
         return (
             <li className={classes}>
-                <div className="view">
-                    <label>{this.props.trip.destination}</label>
+                <div className="tripDisplay">
+                    <h2>Destination</h2>
+                    <p>{this.props.trip.destination}</p>
+                    <h3>Leaving</h3>
+                    <p>{this.props.trip.leaving}</p>
+                    <h3>Returning</h3>
+                    <p>{this.props.trip.returning}</p>
+                    <h3>Contact</h3>
+                    <p>{this.props.trip.contact}</p>
+                    <h3>Discription</h3>
+                    <p>{this.props.trip.discription}</p>
+                    <h3>Seats</h3>
+                    <p>{this.props.trip.seats}</p>
                 </div>
             </li>
         );

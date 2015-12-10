@@ -64,7 +64,7 @@ app.get('/api/trips', function (req,res) {
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
       // if the token is valid, find all the user's trips and return them
-      Trip.collection('users').find({user:user.id}, function(err, trips) {
+      Trip.find({users:user.id}, function(err, trips) {
 	if (err) {
 	  res.sendStatus(403);
 	  return;
