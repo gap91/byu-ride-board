@@ -1,7 +1,6 @@
 var React = require("react");
 var ReactRouter = require("react-router");
 var api = require("./api.js");
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 
 /*TO-DO
@@ -93,9 +92,7 @@ var Create = React.createClass({
     return (
       <div className="createForm" id="a">
         <h1 id="heading">Please enter the information about your trip below</h1>
-        <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionLeaveTimeout={500}>
           {status}
-        </ReactCSSTransitionGroup>
         <form action="" id="create-trip-form" name="tripForm" autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="create-question">What is your destination?</div>
           <input type="text" id="new-item" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
