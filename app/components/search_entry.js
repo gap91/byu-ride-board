@@ -7,6 +7,8 @@ var ListTrips = require("./list_trips.js");
 var GoogleMapsLoader = require('google-maps');
 var SearchDestination = "";
 var SearchRadius = 50;
+var SpecifyBeforeDate = false;
+var LeaveBefore = null;
 var Matches = [];
 
 // Written by Jordan Millard
@@ -32,6 +34,15 @@ var SearchEntry = React.createClass({
     SearchDestination = this.refs.searchtext.value;
     SearchRadius = this.refs.radius.value;
 
+    // if (this.refs.leav)
+    if (this.refs.leaveBefore.value){
+      SpecifyBeforeDate = true;
+      LeaveBefore = new Date(this.refs.leaveBefore.value);
+    } else { // Set option to false
+      SpecifyBeforeDate = false;
+      LeaveBefore = null;   
+    }
+
     if (!SearchDestination | !SearchRadius) {
       return;
     }
@@ -45,7 +56,6 @@ var SearchEntry = React.createClass({
   },
 
   clearMessages: function(){
-    console.log("Entered clear message function.")
     this.setState({
       type: null,
       message: null,
@@ -82,13 +92,26 @@ var SearchEntry = React.createClass({
 
         var today = new Date();
         var returnDate = new Date(trip.returning);
+        var leavingDate = new Date(trip.leaving);
 
-        if (today < returnDate){
-          // console.log("Today is before returnDate");
-        } else {
-          console.log("Today is after returnDate, not adding to results");
+        if (today > returnDate){
+          // Don't display trips that already ended
           return;
         }
+
+        if (SpecifyBeforeDate){
+          // User specified a leave before date
+          if (LeaveBefore < leavingDate){
+            // If the leave before date is before the leaving date, don't use that trip
+
+            console.log(trip);
+            console.log("This trip leaves after specified date, not using");
+            return;
+          }
+
+        }
+
+
 
         // console.log(today);
         // console.log(returnDate);
@@ -162,6 +185,8 @@ var SearchEntry = React.createClass({
           <input type="text" id="new-item" ref="searchtext" placeholder="City or Address" autoFocus={true} required /><br/><br/>
           <div className="create-question">Enter a mile radius</div>
           <input type="number" id="new-item" ref="radius" defaultValue="50" min="5" max="1000" required/><br/><br/>
+          <div className="create-question">Leave befre this date (optional)</div>
+          <input type="date" id="new-item" ref="leaveBefore" /><br/><br/>
           <input className="btn btn-primary" type="submit" value="Search" /><br/><br/>
           <a className="statement">Please be reminded that all trips leave from, and return to, Provo, UT.</a>
           <br/>
