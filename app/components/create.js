@@ -85,7 +85,7 @@ var Create = React.createClass({
           <input type="date" id="new-item" ref="returning" required /><br/><br/>
           <div className="create-question">Please leave your contact information. (i.e. email, phone, etc.)</div>
           <input type="text" id="new-item" ref="contact" placeholder="Contact Information" required /><br/><br/>
-          <div className="create-question">For any other details we forgot to ask...</div>
+          <div className="create-question">For any other details (cost, payment, etc...)</div>
           <input type="text" id="new-item" ref="description" placeholder="Description" required /><br/><br/>
           <div className="create-question">How many open seats will you have?</div>
           <input type="number" id="new-item" ref="seats" placeholder="# of seats" min="0" required /><br/><br/> 
