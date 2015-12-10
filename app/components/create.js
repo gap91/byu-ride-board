@@ -55,11 +55,18 @@ var Create = React.createClass({
     });
   },
 
+  closeAlert: function(_this, event) {
+    event.preventDefault();
+    _this.setState({ type:'', message: ''});
+  },
+
   // render the trip entry area
   render: function() {
+    var _this = this;
     if (this.state.type && this.state.message) {
       var classString = 'alert alert-' + this.state.type;
-      var status = <div id="status" className={classString} class={classString} ref="status">
+      var status = <div id="status" className={classString} ref="status">
+                     <a href="#/dashboard" className="close" data-dismiss="alert" aria-label="close">✖</a>
                      {this.state.message}
                    </div>;
     }
