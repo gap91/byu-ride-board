@@ -41,11 +41,13 @@ body {
 .navbar {
     margin-top: 0px;
     border-radius: 0px !important;
+    position: fixed;
+    width: 100%;
 }
 
 
 .navbar-default {
-  background-color: rgba(255,255,255,.7) !important;
+  background-color: rgba(255,255,255,.965) !important;
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
@@ -327,6 +329,7 @@ body {
     height: 100%;
     top: 10%;
     font-size: 20px;
+    margin-top: 100px;
 }
 
 .createForm#a {
@@ -340,6 +343,7 @@ body {
     height: 100%;
     top: 10%;
     font-size: 20px;
+    margin-top: 100px;
 }
 
 .create-question {
