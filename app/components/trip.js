@@ -6,10 +6,14 @@ var api = require("./api.js");
 var Trip = React.createClass({
     // Initial state
     getInitialState: function () {
+        var leavingDate = new Date(this.props.trip.leaving);
+        var returningDate = new Date(this.props.trip.returning);
+        console.log(leavingDate);
+        console.log(returningDate);
         return {
             destination: this.props.trip.destination,
-            leaving: this.props.trip.leaving,
-            returning: this.props.trip.returning,
+            leaving: leavingDate.toDateString(),
+            returning: returningDate.toDateString(),
             contact: this.props.trip.contact,
             description: this.props.trip.description,
             seats: this.props.trip.seats
@@ -44,13 +48,13 @@ var Trip = React.createClass({
                                 <td>
                                     <div className="tableElement">
                                         <strong>Leaving:</strong>
-                                        <p>{this.props.trip.leaving}</p>
+                                        <p>{this.state.leaving}</p>
                                     </div>
                                 </td>
                                 <td>
                                     <div className="tableElement">
                                         <strong>Returning:</strong>
-                                        <p>{this.props.trip.returning}</p>
+                                        <p>{this.state.returning}</p>
                                     </div>
                                 </td>
                             </tr>

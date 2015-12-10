@@ -64,7 +64,9 @@ var SearchEntry = React.createClass({
       if (SearchDestination == "all"){
         // For testing enter code word "all" to see all destinations
         this.setState({
-          items: data.trips
+          items: data.trips,
+          type: "info",
+          message: "You have entered the code \"all\" which displays all trips in the DB"
         });
         return;
       }
