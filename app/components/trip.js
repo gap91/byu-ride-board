@@ -8,11 +8,15 @@ var Trip = React.createClass({
     getInitialState: function () {
         var leavingDate = new Date(this.props.trip.leaving);
         var returningDate = new Date(this.props.trip.returning);
+
+        // Calculate the MST time zone offsett
+        var leavingOffset = new Date(leavingDate.getTime() + leavingDate.getTimezoneOffset()*60000);
+        var returningOffset = new Date(returningDate.getTime() + returningDate.getTimezoneOffset()*60000);
         
         return {
             destination: this.props.trip.destination,
-            leaving: leavingDate.toDateString(),
-            returning: returningDate.toDateString(),
+            leaving: leavingOffset.toDateString(),
+            returning: returningOffset.toDateString(),
             contact: this.props.trip.contact,
             description: this.props.trip.description,
             seats: this.props.trip.seats,

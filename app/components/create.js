@@ -95,7 +95,7 @@ var Create = React.createClass({
           {status}
         <form action="" id="create-trip-form" name="tripForm" autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="create-question">What is your destination?</div>
-          <input type="text" id="new-item" ref="destination" placeholder="Provo UT" autoFocus={true} required /><br/><br/>
+          <input type="text" id="new-item" ref="destination" placeholder="City or Address" autoFocus={true} required /><br/><br/>
           <div className="create-question">When are you leaving?</div>
           <input type="date" id="new-item" ref="leaving" min={curdate} required /><br/><br/>
           <div className="create-question">When are you returning?</div>
