@@ -44,7 +44,7 @@ var Create = React.createClass({
             for (var ref in _this.refs) {
               _this.refs[ref].value = ''; 
             }
-            _this.setState({ type: 'success', message: 'We have created your trip! Feel free to check it out in your dashboard. Thanks!' });
+            _this.setState({ type: 'success', message: 'We have created your trip. Check it out in your dashboard!' });
       }
       else {
             console.log("no success");
