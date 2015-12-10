@@ -18,6 +18,7 @@ var auth = {
       success: function(res) {
         localStorage.token = res.token;
         localStorage.name = res.name;
+        localStorage.id = res.id;
         this.onChange(true);
         if (cb)
           cb(true);
