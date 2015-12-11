@@ -36,6 +36,7 @@ Search (Jordan):
 -Specify Search Radius (miles)
 -Optionally specify a latest leave by date
 -Filter and list all trips based on search criteria
+-Button to add a search result to your personal dashboard
 
 Create Trip (Garrett):
 -Input Fields (* for required):
@@ -63,8 +64,8 @@ Create
 -Specify trip origin (instead of all based at BYU)
 
 Search
--Button on result trips to add to user's dashboard (future enhancement?)
 -Link in results to open in separate page
+-Maps with search results
 
 Universal Improvement
 -Show a map with the destination route wherever trips are displayed
