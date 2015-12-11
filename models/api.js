@@ -128,22 +128,19 @@ app.put('/api/trips/:trip_id', function (req,res) {
   user = User.verifyToken(req.headers.authorization, function(user) {
     if (user) {
       // if the token is valid, then find the requested trip
-      Trip.findById(req.params.trip_id, function(err,trip) {
-	if (err) {
-	  res.sendStatus(403);
-	  return;
-	}
-        // update the trip
-        trip.collection('users').insert(user.id);
-        trip.save(function(err) {
-	  if (err) {
-	    res.sendStatus(403);
-	    return;
-	  }
-          // return value is the trip as JSON
-          res.json({trip:trip});
-        });
-      });
+    Trip.findByIdAndUpdate(
+        req.params.trip_id,
+        {$push: {"users": user}},
+        {safe: true, upsert: true, new : false},
+        function(err, model) {
+          if (err) {
+            res.sendStatus(403);
+            return;
+          }
+          // res.json({trip:trip});
+          res.sendStatus(200);
+        }
+    );
     } else {
       res.sendStatus(403);
     }

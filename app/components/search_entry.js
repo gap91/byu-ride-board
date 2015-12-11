@@ -167,7 +167,7 @@ var SearchEntry = React.createClass({
     }
 
     return (
-      <div className="createForm" id="a">
+      <div className="searchForm" id="a">
         <h1 id="heading">Search for final destination from Provo, UT</h1>
         <form action="" id="create-trip-form" name="tripForm" autoComplete="off" onSubmit={this.submitSearch}>
           <div className="create-question">Enter a destination</div>

@@ -24,13 +24,26 @@ var Trip = React.createClass({
         }
     },
     // delete myself from this a trip
-    delteTrip: function() {
+    deleteTrip: function() {
         api.deleteTrip(this.props.trip, this.props.reload);
     },
     // add myself to a trip
     addTrip: function() {
-        api.addTrip(this.props.trip, this.props.reload);
+        api.updateTrip(this.props.trip, this.addTripCallback);
     },
+
+    addTripCallback: function(added, res) {
+
+
+        if (res){
+            alert("Trip added to your dashboard!");
+        } else {
+            alert("Error: your trip was not added!");
+        }
+        console.log(res);
+
+    },
+
     // render the Trip
     render: function() {
     // construct a list of classes for the trip CSS
@@ -72,6 +85,11 @@ var Trip = React.createClass({
                                 <div className="tableElement">
                                     <strong>Contact:</strong>
                                     <p>{this.props.trip.contact}</p>
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="btn add-trip-btn" onClick={this.addTrip}>
+                                    <strong>Add to my dashboard</strong>
                                 </div>
                             </div>
                         </div>
