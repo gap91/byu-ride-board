@@ -468,3 +468,9 @@ body {
 .col-sm-12 {
     position: inherit;
 }
+
+.col-sm-2 {
+    position: inherit;
+    float: right;
+    padding: 0px;
+}

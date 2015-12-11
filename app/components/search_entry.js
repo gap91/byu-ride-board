@@ -51,7 +51,8 @@ var SearchEntry = React.createClass({
     // this.refs.searchtext.value = ''; // Maybe I don't like clearing the field every time
     this.setState({
       display: false,
-      message: ''
+      message: '',
+      button: true
     });
   },
 

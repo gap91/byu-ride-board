@@ -84,11 +84,6 @@ var Trip = React.createClass({
                                     <p>{this.props.trip.contact}</p>
                                 </div>
                             </div>
-                            <div className="col-sm-4">
-                                <div className="btn add-trip-btn" onClick={this.addTrip}>
-                                    <strong>Add to my dashboard</strong>
-                                </div>
-                            </div>
                         </div>
                         <div className="row">
                             <div className="col-sm-12">
@@ -96,6 +91,11 @@ var Trip = React.createClass({
                                     <strong>Description</strong>
                                     <p>{this.props.trip.description}</p>
                                 </div>
+                            </div>
+                        </div> 
+                        <div className="col-sm-2">
+                            <div className="btn add-trip-btn" onClick={this.addTrip}>
+                                <strong>Add to my dashboard</strong>
                             </div>
                         </div>
                     </div>
