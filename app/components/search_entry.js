@@ -28,9 +28,6 @@ var SearchEntry = React.createClass({
 
   // handles submit event for searching destinations
   submitSearch: function(event) {
-
-    console.log(localStorage.token);
-
     // prevent default browser submit
     event.preventDefault();
     // get values from form

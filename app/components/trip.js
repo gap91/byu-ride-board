@@ -33,15 +33,12 @@ var Trip = React.createClass({
     },
 
     addTripCallback: function(added, res) {
-
-
-        if (res){
+        if (res == "OK"){
             alert("Trip added to your dashboard!");
         } else {
             alert("Error: your trip was not added!");
         }
-        console.log(res);
-
+        // console.log(res);
     },
 
     // render the Trip

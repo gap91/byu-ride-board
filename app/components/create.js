@@ -60,11 +60,11 @@ var Create = React.createClass({
             for (var ref in _this.refs) {
               _this.refs[ref].value = ''; 
             }
-            console.log(res);
+            // console.log(res);
             _this.setState({ type: 'success', message: 'We have created your trip. Check it out in your dashboard!' });
       }
       else {
-            console.log("no success");
+            // console.log("no success");
             _this.setState({ type: 'danger', message: 'Sorry, there has been an error. Please try again later.' });
       }
     });
