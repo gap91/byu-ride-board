@@ -38,54 +38,52 @@ var Trip = React.createClass({
         return (
             <div className={classes}>
                 <div className="tripDisplay" id="a">
-                    <table className="tripTable" border-bottom="1px solid #ddd" cellSpacing="1" cellPadding="1">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div className="destination">
-                                        <strong>
-                                        <h2>Destination</h2>
-                                        </strong>
-                                        <p>{this.props.trip.destination}</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tableElement">
-                                        <strong>Leaving:</strong>
-                                        <p>{this.state.leaving}</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tableElement">
-                                        <strong>Returning:</strong>
-                                        <p>{this.state.returning}</p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="tableElement">
-                                        <strong>Seats:</strong>
-                                        <p>{this.props.trip.seats}</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tableElement">
-                                        <strong>Contact:</strong>
-                                        <p>{this.props.trip.contact}</p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="tableElement">
-                                        <strong>Description</strong>
-                                        <p>{this.props.trip.description}</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="destination">
+                                    <strong>
+                                    <h2>Destination</h2>
+                                    </strong>
+                                    <p>{this.props.trip.destination}</p>
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="tableElement">
+                                    <strong>Leaving:</strong>
+                                    <p>{this.state.leaving}</p>
+                                </div>
+                            </div>
+                            <div className="col-sm-4">
+                                <div className="tableElement">
+                                    <strong>Returning:</strong>
+                                    <p>{this.state.returning}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-3">
+                                <div className="tableElement">
+                                    <strong>Seats:</strong>
+                                    <p>{this.props.trip.seats}</p>
+                                </div>
+                            </div>
+                            <div className="col-sm-9">
+                                <div className="tableElement">
+                                    <strong>Contact:</strong>
+                                    <p>{this.props.trip.contact}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-12">
+                                <div className="description">
+                                    <strong>Description</strong>
+                                    <p>{this.props.trip.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <br/><br/>
             </div>

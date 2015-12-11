@@ -9,12 +9,12 @@ var Home = React.createClass({
     return (
       <div className="homepage_wrapper">
 	      <p className="orbetweenbuttons">
-	        <Link className="btn btn-primary" to="login">Login</Link>&nbsp;or<Link className="btn btn-primary" to="register">Register</Link>
+	        <Link className="btn btn-primary" to="login">Login</Link>or<Link className="btn btn-primary" to="register">Register</Link>
 	      </p>
 	      <br />
-	      <p>The BYU Ride Board is a simple elegant application for round trip excursions leaving from and returning to the Provo Area.</p>
+	      <p>The BYU Ride Board is a simple, elegant application for round trip excursions leaving from and returning to the Provo Area.</p>
 	      <br />
-	      <p>Search our vast database of trips and find the a ride to wherever you need to go.</p>
+	      <p>Search our vast database of trips and find a ride to wherever you need to go.</p>
 	      <br />
 	      <p>Or create your own trip and allow others to contact you for a ride.</p>
 	      <br />

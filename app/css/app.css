@@ -369,7 +369,7 @@ body {
      Text-Decoration: None !important; 
  }
 
- .tableElement {
+.tableElement {
     padding: 5px;
     text-align: center;
     font-size: 12pt;
@@ -380,8 +380,13 @@ body {
     text-align: center;
     font-size: 12pt;
     background-color: #0266C8;
-    border-color: #0266C8;
     color: #fff;
+}
+
+.description {
+    padding: 5px;
+    text-align: left;
+    font-size: 12pt;
 }
 
 .homepage_wrapper {
@@ -394,7 +399,7 @@ body {
     width: 85%;
     height: 100%;
     top: 10%;
-    font-size: 24px;
+    font-size: 18px;
     color: #fff;
     margin-top: 75px;
 }
