@@ -151,7 +151,7 @@ var SearchEntry = React.createClass({
       classString = 'alert alert-info';
       status = <div id="status" className={classString} ref="status">
                      <a onClick={this.clearMessages} className="close" data-dismiss="alert" aria-label="close">✖</a>
-                     Connecting with Google to calculate distances... (no matches if this takes too long #asyncronousprobs)
+                     Connecting with Google to calculate distances... (no matches if this takes too long, fail message has asyncronous bug)
                    </div>;
 
     }
